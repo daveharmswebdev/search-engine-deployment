@@ -1,0 +1,27 @@
+# IntelliJ IDEA files
+.idea/
+*.iml
+
+# Terraform state files
+terraform.tfstate
+terraform.tfstate.backup
+
+# Terraform lock file
+.terraform.lock.hcl
+
+# Terraform working directory
+.terraform/
+
+# Sensitive Terraform variable files
+*.tfvars
+
+# Log files
+*.log
+
+# Backup and temporary files
+*.bak
+*.tmp
+
+# OS-specific files
+.DS_Store
+Thumbs.db

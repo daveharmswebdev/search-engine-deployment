@@ -51,16 +51,22 @@ resource "aws_iam_role_policy_attachment" "attach_lambda_s3_policy" {
 
 resource "aws_lambda_function" "pdf_to_text_converter" {
   function_name = "pdf-to-text-converter"
-  runtime       = "python3.9"
-  handler       = "app.handler"
+  runtime       = "nodejs20.x"
+  handler       = "index.handler"
   role          = aws_iam_role.lambda_execution_role.arn
   timeout       = 600
-  filename      = "lambda_functions/pdf_to_text.zip"
+  filename      = "${path.module}/lambda-src/pdf-to-text/pdf-to-text.zip"
+
+  source_code_hash = filebase64sha256("${path.module}/lambda-src/pdf-to-text/pdf-to-text.zip")
 
   environment {
     variables = {
       TARGET_BUCKET = aws_s3_bucket.pdf_bucket.bucket
     }
+  }
+
+  tags = {
+    Service = "PDFToText"
   }
 }
 

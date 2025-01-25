@@ -25,3 +25,6 @@ terraform.tfstate.backup
 # OS-specific files
 .DS_Store
 Thumbs.db
+
+# Exclude node_modules folders in Lambda directories
+/lambda-src/**/node_modules/

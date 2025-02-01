@@ -30,9 +30,14 @@ phases:
       - echo "Processing upload-to-search function..."
       - cd lambda-src/upload-to-search && npm install && zip -r ../../artifacts/upload-to-search.zip . && cd ../..
 
+  post_build:
+    commands:
+      - echo "Contents of artifacts folder:"
+      - ls -R artifacts
+
 artifacts:
   files:
-    - artifacts/*.zip
+    - "*.zip"
 
   discard-paths: yes
   base-directory: artifacts

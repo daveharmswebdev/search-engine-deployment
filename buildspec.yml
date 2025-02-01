@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14 # Adjust to the Node.js runtime version of your Lambda functions
+      nodejs: 20 # Adjust to the Node.js runtime version of your Lambda functions
     commands:
       - echo Installing dependencies...
 

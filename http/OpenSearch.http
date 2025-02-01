@@ -47,8 +47,7 @@ Content-Type: application/json
       "query": "games",
       "fields": ["Title", "Author", "Date", "Body"]
     }
-  },
-  "fields": ["Title", "Author", "Date", "Summary"]
+  }
 }
 
 ###

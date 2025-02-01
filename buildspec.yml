@@ -1,0 +1,38 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14 # Adjust to the Node.js runtime version of your Lambda functions
+    commands:
+      - echo Installing dependencies...
+
+  build:
+    commands:
+      - echo "Building and zipping all Lambda functions..."
+
+      # Create an output directory for all the zipped files
+      - mkdir -p artifacts
+
+      # Process pdf-to-text Lambda
+      - echo "Processing pdf-to-text function..."
+      - cd lambda-src/pdf-to-text && npm install && zip -r ../../artifacts/pdf-to-text.zip . && cd ../..
+
+      # Process search-function Lambda
+      - echo "Processing search-function function..."
+      - cd lambda-src/search-function && npm install && zip -r ../../artifacts/search-function.zip . && cd ../..
+
+      # Process search-gateway Lambda
+      - echo "Processing search-gateway function..."
+      - cd lambda-src/search-gateway && npm install && zip -r ../../artifacts/search-gateway.zip . && cd ../..
+
+      # Process upload-to-search Lambda
+      - echo "Processing upload-to-search function..."
+      - cd lambda-src/upload-to-search && npm install && zip -r ../../artifacts/upload-to-search.zip . && cd ../..
+
+artifacts:
+  files:
+    - artifacts/*.zip
+
+  discard-paths: yes
+  base-directory: artifacts

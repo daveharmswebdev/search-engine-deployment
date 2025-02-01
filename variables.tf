@@ -8,3 +8,9 @@ variable "master_user_password" {
   type        = string
   sensitive   = true
 }
+
+variable "opensearch_index" {
+  description = "The name of the OpenSearch index"
+  type        = string
+  default     = "my_open_search_index"
+}

@@ -9,6 +9,53 @@ Content-Type: application/json
   }
 }
 
+### Query OpenSearch Index
+GET https://search-open-search-example-npp3yhhetb5gr5ryzxxx7vxdym.us-east-2.es.amazonaws.com/my_open_search_index/_search?pretty=true
+Authorization: Basic bWFzdGVyLXVzZXI6TWFzdGVyLXBhc3N3b3JkLTEyMyE=
+Content-Type: application/json
+
+{
+  "query": {
+    "term": {
+      "_id": "Games.txt"
+    }
+  }
+}
+
+### Query OpenSearch Index
+GET https://search-open-search-example-npp3yhhetb5gr5ryzxxx7vxdym.us-east-2.es.amazonaws.com/my_open_search_index/_search?pretty=true
+Authorization: Basic bWFzdGVyLXVzZXI6TWFzdGVyLXBhc3N3b3JkLTEyMyE=
+Content-Type: application/json
+
+{
+  "query": {
+    "match": {
+      "Body": "games"
+    }
+  }
+}
+
+### Query OpenSearch Index
+GET https://search-open-search-example-npp3yhhetb5gr5ryzxxx7vxdym.us-east-2.es.amazonaws.com/my_open_search_index/_search?pretty=true
+Authorization: Basic bWFzdGVyLXVzZXI6TWFzdGVyLXBhc3N3b3JkLTEyMyE=
+Content-Type: application/json
+
+{
+  "size": 25,
+  "query": {
+    "multi_match": {
+      "query": "games",
+      "fields": ["Title", "Author", "Date", "Body"]
+    }
+  },
+  "fields": ["Title", "Author", "Date", "Summary"]
+}
+
+###
+GET https://search-open-search-example-npp3yhhetb5gr5ryzxxx7vxdym.us-east-2.es.amazonaws.com/my_open_search_index/_doc/Games.txt
+Authorization: Basic bWFzdGVyLXVzZXI6TWFzdGVyLXBhc3N3b3JkLTEyMyE=
+Content-Type: application/json
+
 ### Search function
 POST https://qkjs0hnwij.execute-api.us-east-2.amazonaws.com/search
 Content-Type: application/json

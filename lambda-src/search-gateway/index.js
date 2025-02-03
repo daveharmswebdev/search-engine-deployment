@@ -97,15 +97,14 @@ const htmlResponse = `
 					console.log("Successful search");
 					$.each(resp, function(key, item)
 					{
-						let title = item.fields.Title;
-						let author = item.fields.Author;
-						let date = item.fields.Date;
-						let summary = item.fields.Summary;
+						let title = item.title;
+						let author = item.author;
+						let date = item.date;
+						let summary = item.summary;
 						$('#results').append("<br>Title : " + title);
 						$('#results').append("<br>Author : " + author);
 						$('#results').append("<br>Date : " + date);
 						$('#results').append("<br>Summary : " + summary);
-						$('#results').append("<br>Score : " + item._score);
 						$('#results').append("<br><br>");
             		});
         		},

@@ -4,6 +4,7 @@ const {
   PutObjectCommand,
 } = require("@aws-sdk/client-s3");
 const pdf = require("pdf-parse");
+const { PDFDocument } = require("pdf-lib");
 
 const s3 = new S3Client({ region: "us-east-2" });
 
@@ -53,12 +54,17 @@ exports.handler = async (event) => {
     const pdfData = await pdf(pdfBuffer);
     console.log("Extracted Text:", pdfData.text);
 
+    const pdfDoc = await PDFDocument.load(pdfBuffer);
+    const title = pdfDoc.getTitle() || "Untitled";
+    const author = pdfDoc.getAuthor() || "Unknown";
+    console.log("PDF Title:", title, "Author", author);
+
     // Step 3: Save the extracted text back to S3
     const textKey = pdfKey.replace(".pdf", ".txt");
     const putObjectParams = {
       Bucket: bucketName,
       Key: textKey,
-      Body: pdfData.text,
+      Body: `${title}\n${author}\n${pdfData.text}`,
       ContentType: "text/plain",
     };
 

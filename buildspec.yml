@@ -16,19 +16,19 @@ phases:
 
       # Process pdf-to-text Lambda
       - echo "Processing pdf-to-text function..."
-      - cd lambda-src/pdf-to-text && npm install && zip -r ../../artifacts/pdf-to-text.zip . && cd ../..
+      - cd lambda-src/pdf-to-text && npm install && zip -rq ../../artifacts/pdf-to-text.zip . && cd ../..
 
       # Process search-function Lambda
       - echo "Processing search-function function..."
-      - cd lambda-src/search-function && npm install && zip -r ../../artifacts/search-function.zip . && cd ../..
+      - cd lambda-src/search-function && npm install && zip -rq ../../artifacts/search-function.zip . && cd ../..
 
       # Process search-gateway Lambda
       - echo "Processing search-gateway function..."
-      - cd lambda-src/search-gateway && npm install && zip -r ../../artifacts/search-gateway.zip . && cd ../..
+      - cd lambda-src/search-gateway && npm install && zip -rq ../../artifacts/search-gateway.zip . && cd ../..
 
       # Process upload-to-search Lambda
       - echo "Processing upload-to-search function..."
-      - cd lambda-src/upload-to-search && npm install && zip -r ../../artifacts/upload-to-search.zip . && cd ../..
+      - cd lambda-src/upload-to-search && npm install && zip -rq ../../artifacts/upload-to-search.zip . && cd ../..
 
   post_build:
     commands:

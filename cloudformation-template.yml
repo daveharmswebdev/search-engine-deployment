@@ -10,7 +10,7 @@ Resources:
   PdfToTextLambda:
     Type: AWS::Lambda::Function
     Properties:
-      FunctionName: pdf-to-text
+      FunctionName: pdf-to-text-converter
       Runtime: nodejs20.x  # Adjust to the runtime version of your Lambda functions
       Handler: index.handler
       Role: arn:aws:iam::417355468534:role/lambda-execution-role  # Replace with your IAM role ARN

@@ -34,6 +34,13 @@ phases:
     commands:
       - echo "Contents of artifacts folder:"
       - ls -R artifacts
+      - echo "Uploading artifacts to s3 bucket: search-engine-deployment-artificacts-bucket"
+      - aws s3 cp artifacts/ s3://search-engine-deployment-artificacts-bucket/ --recursive
+      - aws cloudformation deploy \
+        --template-file cloudformation-template.yml \
+        --stack-name lambda-deployment-stack \
+        --parameter-overrides S3Bucket=search-engine-deployment-artificacts-bucket \
+        --capabilities CAPABILITY_NAMED_IAM
 
 artifacts:
   files:

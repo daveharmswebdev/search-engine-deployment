@@ -68,6 +68,10 @@ output "lambda_search_function_arn" {
   value       = aws_lambda_function.search_function.arn
 }
 
+output "lambda_execution_role_arm" {
+  description = "Lambda execution role ARN"
+  value = aws_iam_role.lambda_execution_role.arn
+}
 
 
 
